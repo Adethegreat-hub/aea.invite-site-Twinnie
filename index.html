@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invitation</title>
+
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#111;
+      font-family:Arial, sans-serif;
+    }
+
+    .card{
+      text-align:center;
+      cursor:pointer;
+    }
+
+    .envelope{
+      width:280px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      transition:transform 0.6s ease;
+    }
+
+    .envelope.open{
+      transform:translateY(-20px) scale(1.05);
+    }
+
+    .invite{
+      display:none;
+      width:320px;
+      border-radius:16px;
+      margin-top:20px;
+      animation:fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:scale(0.9);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+    .text{
+      color:white;
+      margin-top:15px;
+      opacity:0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgmusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="card" onclick="openInvite()">
+
+    <!-- Cover Image -->
+    <img src="cover.png" class="envelope" id="cover">
+
+    <div class="text">
+      Tap to open invitation ✨
+    </div>
+
+    <!-- Hidden Invitation -->
+    <img src="invite.png" class="invite" id="invite">
+
+  </div>
+
+  <script>
+
+    function openInvite(){
+
+      // Open animation
+      document.getElementById("cover").classList.add("open");
+
+      // Show invitation
+      document.getElementById("invite").style.display = "block";
+
+      // Play music
+      document.getElementById("bgmusic").play();
+
+    }
+
+  </script>
+
+</body>
+</html>
